@@ -16,18 +16,26 @@ const {CourseModel,PurchasesModel} = require("../db");
 const coursesRouter= Router();
 
     coursesRouter.post("/purchase", authUSER, async function(req,res){
+        try {
         const userId = req.userId;
         const courseId = req.body.courseId;
 
-            
+        if (!userId || !courseId) {
+            return res.status(400).json({ message: "User or Course ID missing" });
+        }
+
         await PurchasesModel.create({
             userId,
             courseId
-        })
+        });
 
         res.json({
-            message:"You have successfully bought the course"
-        })
+            message: "You have successfully bought the course"
+        });
+    } catch (err) {
+        console.error("Purchase error:", err);
+        res.status(500).json({ message: "Purchase failed. Please try again." });
+    }
     })
 
     
