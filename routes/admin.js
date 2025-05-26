@@ -18,7 +18,7 @@ const {JWT_ADMIN_SECRET}= require("../config.js");
 
 
 
-adminRouter.post("/signup",async function(req,res){
+adminRouter.post("/api/signup",async function(req,res){
 
         const requiredBody = z.object({
             email: z.string().min(3).max(100),
@@ -60,7 +60,7 @@ adminRouter.post("/signup",async function(req,res){
 
 
 
-adminRouter.post("/signin",async function(req,res){
+adminRouter.post("/api/signin",async function(req,res){
     const email = req.body.email;
     const password = req.body.password;
 

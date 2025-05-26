@@ -19,7 +19,7 @@ const { UserModel, PurchasesModel} = require("../db")
 const userRouter = Router();
 
 
-userRouter.post("/signup", async function (req, res) {
+userRouter.post("/api/signup", async function (req, res) {
 
 
     const requiredBody = z.object({
@@ -62,7 +62,7 @@ userRouter.post("/signup", async function (req, res) {
 
 });
 
-userRouter.post("/signin", async function (req, res) {
+userRouter.post("/api/signin", async function (req, res) {
     const email = req.body.email;
     const password= req.body.password;
 

@@ -21,7 +21,7 @@ function AdminSignUp() {
     e.preventDefault();
     setError("");
     try {
-      const response = await fetch("http://localhost:3003/admin/signup", {
+      const response = await fetch("http://localhost:3003/admin/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

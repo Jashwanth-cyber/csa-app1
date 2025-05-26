@@ -16,7 +16,7 @@ function UserSignIn() {
     e.preventDefault();
     setError("");
     try {
-      const response = await fetch("http://localhost:3003/user/signin", {
+      const response = await fetch("http://localhost:3003/user/api/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
