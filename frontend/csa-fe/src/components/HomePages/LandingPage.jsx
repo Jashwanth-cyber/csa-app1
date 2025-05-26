@@ -7,8 +7,8 @@ export default function LandingPage() {
             <div class="relative w-full h-screen overflow-hidden">
 
                 <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-                    <source src="/path-to-your-video.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
+                    <source src="" type="video/mp4" />
+                    {/* Your browser does not support the video tag. */}
                 </video>
 
 

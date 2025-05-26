@@ -107,7 +107,7 @@ adminRouter.post("/course", authADMIN, async function(req,res){
     })
 });
 
-adminRouter.put("/course",authADMIN,async function(req,res){
+adminRouter.put("/course/:id",authADMIN,async function(req,res){
     const adminId = req.adminId;
    
     const {title, description, price, imageUrl,courseId} = req.body;   
@@ -142,7 +142,10 @@ adminRouter.get("/course/bulk",authADMIN,async function(req,res){
         courses
     })
 })
-
+adminRouter.get("/me", authADMIN, async (req, res) => {
+  const admin = await AdminModel.findById(req.adminId);
+  res.json({ admin });
+});
 
 
 

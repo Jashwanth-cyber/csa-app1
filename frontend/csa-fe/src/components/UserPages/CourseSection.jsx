@@ -32,17 +32,20 @@ function CourseSection() {
     fetchCourses();
   }, []);
 
-  // Handle course purchase
+
   const handlePurchase = async (courseId) => {
     setPurchaseMsg("");
     try {
+
       const token = localStorage.getItem("token");
       const response = await fetch(`http://localhost:3003/courses/purchase`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          "token": `${token}`,
+
         },
+        credentials: "include",
         body: JSON.stringify({ courseId }),
       });
       const data = await response.json();
@@ -62,9 +65,12 @@ function CourseSection() {
     <>
       <UserNavbar />
       <div className="min-h-screen bg-gradient-to-br from-green-100 to-green-300 px-4 py-10">
-        <h2 className="text-3xl font-bold text-green-700 mb-8 text-center">
-          Available Courses
-        </h2>
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-green-900 mb-8">Our Courses</h1>
+          <p className="text-xl text-gray-600 mb-12">
+            Explore our comprehensive selection of computer science courses
+          </p>
+        </div>
         {purchaseMsg && (
           <div className="mb-6 text-center">
             <span className="px-4 py-2 rounded-lg bg-green-200 text-green-800 font-semibold">
@@ -107,7 +113,7 @@ function CourseSection() {
                     {course.description}
                   </p>
                   <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold mb-2">
-                    {course.category || "General"}
+                    {course.price ? `₹${course.price}` : "Free"}
                   </span>
                   <button
                     className="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition"

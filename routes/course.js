@@ -23,7 +23,10 @@ const coursesRouter= Router();
         if (!userId || !courseId) {
             return res.status(400).json({ message: "User or Course ID missing" });
         }
-
+        const alreadyPurchased = await PurchasesModel.findOne({ userId, courseId });
+        if (alreadyPurchased) {
+            return res.status(400).json({ message: "User already purchased the course" });
+        }
         await PurchasesModel.create({
             userId,
             courseId

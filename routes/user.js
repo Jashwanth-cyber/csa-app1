@@ -102,6 +102,11 @@ userRouter.get("/purchases",authUSER, async function (req, res) {
     })
 });
 
+userRouter.get("/me", authUSER, async (req, res) => {
+  const user = await UserModel.findById(req.userId);
+  res.json({ user });
+});
+
 module.exports = {
     userRouter: userRouter
 };

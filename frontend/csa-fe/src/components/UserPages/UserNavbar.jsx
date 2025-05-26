@@ -21,6 +21,7 @@ function UserNavbar() {
             src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
             alt="User"
             className="w-12 h-12  rounded-full border-4 border-green-200 cursor-pointer"
+            onClick={() => navigate("/user/dashboard/profile")}
           />
         </div>
         </nav>
